@@ -7,10 +7,26 @@ class ClassComponent extends Component {
 
         this.state ={
             count: props.count,
-            color: props.color
+            coffee: []
         }
     }
 
+    componentDidMount() {
+        console.log("component did mount")
+        let url = 'https://api.sampleapis.com/coffee/hot'
+        fetch(url)
+        .then(res => res.json)
+        .then(data => 
+            this.setState(
+            {
+            count: this.state.count,
+            coffee: data
+            })
+        )
+       
+    }
+
+  
     render() {
         return (
             <>
